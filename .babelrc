@@ -1,0 +1,18 @@
+{
+  "presets": [
+    "es2015",
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "transform-es2015-destructuring",
+    "transform-object-rest-spread",
+    "transform-runtime"],
+  "env" : {
+    "test": {
+      "plugins": [ [ "__coverage__", { "only": "src/" } ] ]
+    }
+  }
+}
