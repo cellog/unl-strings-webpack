@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
 
 class Goose {
-  constructor(url) {
+  constructor(url, mong = mongoose) {
     if (!url) {
-      this.goose = mongoose.connect('mongodb://localhost/unl')
+      this.goose = mong.connect('mongodb://localhost/unl')
     } else {
-      this.goose = mongoose.connect(url)
+      this.goose = mong.connect(url)
     }
   }
   static User = mongoose.Schema({

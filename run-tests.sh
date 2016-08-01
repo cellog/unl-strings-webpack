@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-#export NODE_ENV=test
+export NODE_ENV=test
+./node_modules/mocha/bin/mocha --compiler js:babel-register test/server
 ./node_modules/karma/bin/karma start test/karma/karma.edge.conf.js
 ./node_modules/karma/bin/karma start test/karma/karma.ie10.conf.js
 ./node_modules/karma/bin/karma start test/karma/karma.ie11.conf.js
@@ -29,5 +30,5 @@
 ./node_modules/karma/bin/karma start test/karma/karma.safari7.conf.js
 ./node_modules/karma/bin/karma start test/karma/karma.safari8.conf.js
 ./node_modules/karma/bin/karma start test/karma/karma.safari9.conf.js
-#./node_modules/.bin/lcov-result-merger './test/karma/coverage/**/lcov.info' 'lcov.info'
-#./node_modules/codeclimate-test-reporter/bin/codeclimate.js < lcov.info
+./node_modules/.bin/lcov-result-merger './test/karma/coverage/**/lcov.info' 'lcov.info'
+./node_modules/codeclimate-test-reporter/bin/codeclimate.js < lcov.info
