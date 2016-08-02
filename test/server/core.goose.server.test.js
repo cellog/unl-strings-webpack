@@ -11,6 +11,14 @@ describe("core.goose", () => {
 
   it("should set the url to 'mongodb://localhost/unl'", () => {
     const spy = { connect: sinon.spy() }
+    const t = new goose(undefined, spy)
+
+    expect(t).instanceof(goose)
+    expect(spy.connect).calledWith('mongodb://localhost/unl')
+  })
+
+  it("should set the url to custom url", () => {
+    const spy = { connect: sinon.spy() }
     const t = new goose('foo://bar', spy)
 
     expect(t).instanceof(goose)
