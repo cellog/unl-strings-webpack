@@ -24,3 +24,4 @@ rules:
   comma-dangle: 0
   semi: [2, "never"]
   new-cap: 0
+  react/prefer-stateless-function: 0

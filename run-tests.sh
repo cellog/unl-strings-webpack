@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 export NODE_ENV=test
-./node_modules/mocha/bin/mocha --compiler js:babel-register test/server
+./node_modules/mocha/bin/mocha --compilers js:babel-register test/server
 ./node_modules/karma/bin/karma start test/karma/karma.edge.conf.js
 ./node_modules/karma/bin/karma start test/karma/karma.ie10.conf.js
 ./node_modules/karma/bin/karma start test/karma/karma.ie11.conf.js

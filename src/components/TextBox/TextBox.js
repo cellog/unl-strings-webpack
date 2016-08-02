@@ -7,20 +7,20 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { Component, PropTypes } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './TextBox.scss';
+import React, { Component, PropTypes } from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import s from './TextBox.scss'
 
 @withStyles(s)
 class TextBox extends Component {
 
   static propTypes = {
     maxLines: PropTypes.number,
-  };
+  }
 
   static defaultProps = {
     maxLines: 1,
-  };
+  }
 
   render() {
     return (
@@ -42,9 +42,9 @@ class TextBox extends Component {
             />
         }
       </div>
-    );
+    )
   }
 
 }
 
-export default TextBox;
+export default TextBox
