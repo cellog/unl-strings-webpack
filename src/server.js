@@ -67,6 +67,13 @@ server.get('/login/facebook/return',
   }
 )
 
+server.get('/Shibboleth.sso/Metadata',
+  function(req, res) {
+    res.type('application/xml');
+    res.send(200, samlStrategy.generateServiceProviderMetadata(cert));
+  }
+);
+
 //
 // Register API middleware
 // -----------------------------------------------------------------------------

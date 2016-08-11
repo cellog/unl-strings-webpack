@@ -14,16 +14,30 @@
  */
 
 import passport from 'passport'
+import fs from 'fs'
 // import goose from './goose'
 import { Strategy as FacebookStrategy } from 'passport-facebook'
 import SAMLStrategy from 'passport-saml-encrypted'
 import db from './db'
 import { auth as config } from '../config'
 
+let decryptionPvk
+let cert
+
+try {
+  decryptionPvk = fs.readFileSync('../../../pkey.txt', 'utf-8')
+  cert = fs.readFileSync('../../../crt.txt', 'utf-8')
+} catch (e) {
+  console.log(e)
+  decryptionPvk = ''
+  cert = ''
+}
 passport.use(new SAMLStrategy.Strategy({
   path: '/login/saml',
   entrypoint: 'https://shib.unl.edu/idp/shibboleth',
   issuer: 'passport-saml',
+  decryptionPvk,
+  cert,
 }, (profile, done) => {
   done()
 }))
@@ -33,7 +47,9 @@ passport.use(new SAMLStrategy.Strategy({
 passport.use(new FacebookStrategy({
   clientID: config.facebook.id,
   clientSecret: config.facebook.secret,
-  callbackURL: '/login/facebook/return',
+  callbackURL: '//login/samlcallback',
+  entryPoint: 'https://shib.unl.edu/idp/profile/Shibboleth/SSO',
+  issuer: 'unl.edu',
   profileFields: ['name', 'email', 'link', 'locale', 'timezone'],
   passReqToCallback: true,
 }, (req, accessToken, refreshToken, profile, done) => {
