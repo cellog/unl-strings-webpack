@@ -25,8 +25,8 @@ let decryptionPvk
 let cert
 
 try {
-  decryptionPvk = fs.readFileSync('../../../pkey.txt', 'utf-8')
-  cert = fs.readFileSync('../../../crt.txt', 'utf-8')
+  decryptionPvk = fs.readFileSync('/home/unl/pkey.txt', 'utf-8')
+  cert = fs.readFileSync('/home/unl/crt.txt', 'utf-8')
 } catch (e) {
   console.log(e)
   decryptionPvk = ''
