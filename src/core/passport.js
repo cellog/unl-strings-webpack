@@ -22,7 +22,7 @@ import { auth as config } from '../config'
 
 passport.use(new SAMLStrategy.Strategy({
   path: '/login/saml',
-  entrypoint: 'https://shib.unl.edu/idp/profile/Shibboleth/SSO',
+  entrypoint: 'https://shib.unl.edu/idp/shibboleth',
   issuer: 'passport-saml',
 }, (profile, done) => {
   done()

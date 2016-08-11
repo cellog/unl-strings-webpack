@@ -4,7 +4,7 @@
 build
 node_modules
 ncp-debug.log
-data
+/data
 *.log
 *.pid
 *.seed
