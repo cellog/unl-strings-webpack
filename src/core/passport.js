@@ -32,7 +32,7 @@ try {
   decryptionPvk = ''
   cert = ''
 }
-passport.use(new SAMLStrategy.Strategy({
+const samlStrategy = new SAMLStrategy.Strategy({
   path: '/login/saml',
   entrypoint: 'https://shib.unl.edu/idp/shibboleth',
   issuer: 'passport-saml',
@@ -40,7 +40,10 @@ passport.use(new SAMLStrategy.Strategy({
   cert,
 }, (profile, done) => {
   done()
-}))
+})
+passport.use(samlStrategy)
+
+export { samlStrategy }
 /**
  * Sign in with Facebook.
  */
