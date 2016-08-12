@@ -43,7 +43,7 @@ const samlStrategy = new SAMLStrategy.Strategy({
 })
 passport.use(samlStrategy)
 
-export { samlStrategy }
+export { samlStrategy, cert }
 /**
  * Sign in with Facebook.
  */

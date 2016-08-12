@@ -19,7 +19,8 @@ import expressGraphQL from 'express-graphql'
 import jwt from 'jsonwebtoken'
 import ReactDOM from 'react-dom/server'
 import PrettyError from 'pretty-error'
-import { samlStrategy }, passport from './core/passport'
+import passport from './core/passport'
+import { samlStrategy, cert } from './core/passport'
 import schema from './data/schema'
 import Router from './routes'
 import assets from './assets'
@@ -68,11 +69,11 @@ server.get('/login/facebook/return',
 )
 
 server.get('/Shibboleth.sso/Metadata',
-  function(req, res) {
-    res.type('application/xml');
-    res.send(200, samlStrategy.generateServiceProviderMetadata(cert));
+  (req, res) => {
+    res.type('application/xml')
+    res.send(200, samlStrategy.generateServiceProviderMetadata(cert))
   }
-);
+)
 
 //
 // Register API middleware
