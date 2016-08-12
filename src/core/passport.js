@@ -34,7 +34,7 @@ try {
 }
 const samlStrategy = new SAMLStrategy.Strategy({
   path: '/login/saml',
-  callbackUrl: 'http://music-strings.unl.edu/login/callback'
+  callbackUrl: 'http://music-strings.unl.edu/login/callback',
   entrypoint: 'https://shib.unl.edu/idp/shibboleth',
   issuer: 'passport-saml',
   decryptionPvk,
