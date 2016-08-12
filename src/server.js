@@ -55,6 +55,14 @@ server.use(expressJwt({
 }))
 server.use(passport.initialize())
 
+passport.serializeUser(function (user, done) {
+  done(null, user)
+})
+
+passport.deserializeUser(function (user, done) {
+  done(null, user)
+})
+
 server.get('/login/facebook',
   passport.authenticate('facebook', { scope: ['email', 'user_location'], session: false })
 )
@@ -72,6 +80,19 @@ server.get('/Shibboleth.sso/Metadata',
   (req, res) => {
     res.type('application/xml')
     res.send(200, samlStrategy.generateServiceProviderMetadata(cert))
+  }
+)
+
+server.post('/login/callback',
+  passport.authenticate('saml', { failureRedirect: '/login/fail', failureFlash: true }),
+  (req, res) => {
+    res.redirect('/')
+  }
+)
+
+server.get('/login/fail',
+  (req, res) => {
+    res.send(401, 'Login failed')
   }
 )
 
