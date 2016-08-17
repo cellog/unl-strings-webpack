@@ -130,7 +130,7 @@
     ]
   },
   "scripts": {
-    "lint": "eslint src tools && jscs src tools --verbose",
+    "lint": "eslint src tools",
     "csslint": "csscomb src/components --lint --verbose",
     "csscomb": "csscomb src/components --verbose",
     "test": "./run-tests.sh",

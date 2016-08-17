@@ -28,15 +28,14 @@ try {
   decryptionPvk = fs.readFileSync('/home/unl/pkey.txt', 'utf-8')
   cert = fs.readFileSync('/home/unl/crt.txt', 'utf-8')
 } catch (e) {
-  console.log(e)
   decryptionPvk = ''
   cert = ''
 }
 const samlStrategy = new SAMLStrategy.Strategy({
   path: '/login/saml',
-  callbackUrl: 'http://music-strings.unl.edu/login/callback',
-  entrypoint: 'https://shib.unl.edu/idp/shibboleth',
-  issuer: 'passport-saml',
+  callbackUrl: 'https://music-strings.unl.edu/login/callback',
+  entryPoint: 'https://shib.unl.edu/idp/shibboleth',
+  issuer: 'https://music-strings.unl.edu/sp',
   decryptionPvk,
   cert,
 }, (profile, done) => {

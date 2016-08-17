@@ -9,6 +9,7 @@
 
 import 'babel-polyfill'
 import path from 'path'
+import http from 'http'
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
@@ -53,13 +54,24 @@ server.use(expressJwt({
   getToken: req => req.cookies.id_token,
   /* jscs:enable requireCamelCaseOrUpperCaseIdentifiers */
 }))
+
+server.use((req, res, next) => {
+  // Set permissive CORS header - this allows this server to be used only as
+  // an API server in conjunction with something like webpack-dev-server.
+  res.setHeader('Access-Control-Allow-Origin', '*')
+
+  // Disable caching so we'll always get the latest comments.
+  res.setHeader('Cache-Control', 'no-cache')
+  next()
+})
+
 server.use(passport.initialize())
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser((user, done) => {
   done(null, user)
 })
 
-passport.deserializeUser(function (user, done) {
+passport.deserializeUser((user, done) => {
   done(null, user)
 })
 
@@ -138,6 +150,16 @@ server.get('*', async (req, res, next) => {
     next(err)
   }
 })
+
+const httpserver = http.createServer(server)
+const primus = new Primus(httpserver,
+  {
+    transformer: 'engine.io',
+    parser: 'JSON',
+    compression: true
+  })
+// primus.use('responder', PrimusResponder)
+primus.save(path.join(__dirname, 'public', 'scripts', 'primus.js'))
 
 //
 // Error handling
