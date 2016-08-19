@@ -26,6 +26,8 @@ const router = new Router(on => {
 
   on('/contact', async () => <ContactPage />)
 
+  on('/login/myunl', async () => { location.href = '/login/myunl' })
+
   on('/login', async () => <LoginPage />)
 
   on('/register', async () => <RegisterPage />)
