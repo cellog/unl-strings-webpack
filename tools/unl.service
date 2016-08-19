@@ -3,7 +3,7 @@ Description=UNL Strings Website
 After=mongotest.service
 
 [Service]
-ExecStart=/home/unl/debugserver --release
+ExecStart=/home/unl/.nvm/versions/node/v6.2.2/bin/node /home/unl/unl-strings-webpack/build/server.js
 Restart=on-failure
 RestartSec=5
 User=unl
