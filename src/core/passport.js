@@ -34,7 +34,7 @@ try {
 const samlStrategy = new SAMLStrategy.Strategy({
   path: '/login/saml',
   callbackUrl: 'https://music-strings.unl.edu/login/callback',
-  entryPoint: 'https://shib.unl.edu/idp/shibboleth',
+  entryPoint: 'https://shib.unl.edu/idp/profile/Shibboleth/SSO',
   issuer: 'https://music-strings.unl.edu/sp',
   decryptionPvk,
   cert,
