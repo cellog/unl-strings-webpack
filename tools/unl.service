@@ -1,0 +1,15 @@
+[Unit]
+Description=UNL Strings Website
+After=mongotest.service
+
+[Service]
+ExecStart=/home/unl/debugserver --release
+Restart=on-failure
+RestartSec=5
+User=unl
+Group=unl
+
+[Install]
+WantedBy=multi-user.target
+Alias=unl.service
+

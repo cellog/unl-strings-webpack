@@ -1,0 +1,14 @@
+[Unit]
+Description=UNL Strings Website Test MongoDB
+
+[Service]
+ExecStart=/home/unl/mongo
+Restart=on-failure
+RestartSec=5
+User=unl
+Group=unl
+
+[Install]
+WantedBy=multi-user.target
+Alias=mongotest.service
+

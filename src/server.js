@@ -95,6 +95,13 @@ server.get('/Shibboleth.sso/Metadata',
   }
 )
 
+server.get('/login/myunl',
+  passport.authenticate('saml', { failureRedirect: '/login/fail' }),
+  (req, res) => {
+    res.send('Hello World!')
+  }
+)
+
 server.post('/login/callback',
   passport.authenticate('saml', { failureRedirect: '/login/fail', failureFlash: true }),
   (req, res) => {
