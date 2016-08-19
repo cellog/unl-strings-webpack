@@ -25,7 +25,7 @@ class Navigation extends Component {
         <Link className={s.link} to="/about">About</Link>
         <Link className={s.link} to="/contact">Contact</Link>
         <span className={s.spacer}> | </span>
-        <Link className={s.link} to="/login/myunl">Log in (with my.unl.edu)</Link>
+        <a className={s.link} href="/login/myunl">Log in (with my.unl.edu)</a>
       </div>
     )
   }
