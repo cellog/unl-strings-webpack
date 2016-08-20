@@ -17,7 +17,7 @@ import passport from 'passport'
 import fs from 'fs'
 // import goose from './goose'
 import { Strategy as FacebookStrategy } from 'passport-facebook'
-import SAMLStrategy from 'passport-saml'
+import SAMLStrategy from 'passport-saml-encrypted'
 import db from './db'
 import { auth as config } from '../config'
 

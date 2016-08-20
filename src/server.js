@@ -88,13 +88,6 @@ server.get('/login/facebook/return',
   }
 )
 
-server.get('/Shibboleth.sso/Metadata',
-  (req, res) => {
-    res.type('application/xml')
-    res.send(200, samlStrategy.generateServiceProviderMetadata(cert))
-  }
-)
-
 server.get('/login/myunl',
   passport.authenticate('saml', { failureRedirect: '/login/fail' }),
   (req, res) => {
