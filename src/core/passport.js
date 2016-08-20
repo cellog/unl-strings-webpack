@@ -36,6 +36,7 @@ const samlStrategy = new SAMLStrategy.Strategy({
   callbackUrl: 'https://music-strings.unl.edu/login/callback',
   entryPoint: 'https://shib.unl.edu/idp/profile/SAML2/Redirect/SSO',
   issuer: 'https://music-strings.unl.edu/sp',
+  identifierFormat: 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
   decryptionPvk,
   cert,
 }, (profile, done) => {
