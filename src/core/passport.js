@@ -40,6 +40,7 @@ const samlStrategy = new SAMLStrategy.Strategy({
   decryptionPvk,
   cert,
 }, (profile, done) => {
+  console.log(profile)
   done()
 })
 passport.use(samlStrategy)
